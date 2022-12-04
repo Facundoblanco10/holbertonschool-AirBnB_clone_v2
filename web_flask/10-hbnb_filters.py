@@ -10,18 +10,14 @@ app = Flask(__name__)
 
 
 @app.route('/hbnb_filters', strict_slashes=False)
-def hbnb_page(id=None):
+def hbnb_page():
     from models.state import State
+    from models.amenity import Amenity
     states = storage.all(State).values()
-    state = None
-    for i in states:
-        if id == i.id:
-            state = i
-            break
+    amenities = storage.all(Amenity).values()
     return render_template('10-hbnb_filters.html',
                            states=states,
-                           state=state,
-                           id=id)
+                           amenities=amenities)
 
 
 @app.teardown_appcontext

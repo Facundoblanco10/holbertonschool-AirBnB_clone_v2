@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" type="text/css" href="styles/4-common.css">
-    <link rel="stylesheet" type="text/css" href="styles/3-header.css">
-    <link rel="stylesheet" type="text/css" href="styles/3-footer.css">
-    <link rel="stylesheet" type="text/css" href="styles/6-filters.css">
-    <link rel="icon" href="images/icon.png" />
+    <link rel="stylesheet" type="text/css" href="../static/styles/4-common.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/3-header.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/3-footer.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/6-filters.css">
+    <link rel="icon" href="../static/images/icon.png" />
     <title>HBnB</title>
   </head>
   <body>
@@ -19,20 +19,16 @@
 	  <h4>&nbsp;</h4>
 	  <div class="popover">
 	    <ul>
+		{% for state in states|sort(attribute="name") %}
 	      <li>
-		<h2>Arizona:</h2>
-		<ul>
-		  <li>Pheonix</li>
-		  <li>Sedona</li>
-		</ul>
+			<h2>{{state.name}}</h2>
+			<ul>
+			{% for city in state.cities|sort(attribute="name") %}
+		  		<li>{{city.name}}</li>
+			{% endfor %}
+			</ul>
 	      </li>
-	      <li>
-		<h2>California:</h2>
-		<ul>
-		  <li>LA</li>
-		  <li>SF</li>
-		</ul>
-	      </li>
+		{% endfor %}
 	    </ul>
 	  </div>
 	</div>
@@ -41,10 +37,9 @@
 	  <h4>&nbsp;</h4>
 	  <div class="popover">
 	    <ul>
-	      <li>Internet</li>
-	      <li>TV</li>
-	      <li>Kitchen</li>
-	      <li>Iron</li>
+		{% for ame in amenities %}
+	      <li>{{ame.name}}</li>
+		{% endfor %}
 	    </ul>
 	  </div>
 	</div>
