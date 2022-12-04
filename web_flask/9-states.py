@@ -19,9 +19,10 @@ def states_id_page(id=None):
         if id == i.id:
             state = i
             break
-    return render_template('9-states.html', states=states,
-                            state=state,
-                            id=id)
+    return render_template('9-states.html',
+                           states=states,
+                           state=state,
+                           id=id)
 
 
 @app.teardown_appcontext
